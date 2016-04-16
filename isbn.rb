@@ -1,11 +1,11 @@
 def valid_isbn?(any_string)
-​
+
   no_dashes_or_spaces = remove_disallowed(any_string)
-​
+
 	no_dashes_or_spaces_array = no_dashes_or_spaces.split("")	
 		
 	if no_dashes_or_spaces.length == 10
-​
+
 		check_x = change_check_digit_from_X_to_10(no_dashes_or_spaces_array)
 		
 		if numeric_characters?(check_x)== false
@@ -29,23 +29,23 @@ def valid_isbn?(any_string)
 	end
  
 end
-​
+
 def valid_isbn_10?(any_array)
     array =[]
 	any_array.each do |value|
     array << value.to_i 
     end
     
-​
+
 sum = 0
-​
+
     array.each.with_index do |value, index|
     break if index == 9
     sum += value * (index + 1)
     end
-​
+
 check_digit = sum % 11
-​
+
     if check_digit == array[9]
      true
     else
@@ -53,9 +53,9 @@ check_digit = sum % 11
     end
    
 end
-​
-​
-​
+
+
+
 def remove_disallowed(any_string)
     disallowed_characters = [ " ", "-", "\n", "\""]
     
@@ -64,16 +64,16 @@ def remove_disallowed(any_string)
     end
     any_string
 end
-​
-​
-​
+
+
+
 def verify_length(no_dashes_or_spaces)
   no_dashes_or_spaces.length == 10 || no_dashes_or_spaces.length == 13
   
 end
-​
+
 def valid_isbn_13?(array_13)
-​
+
  
  array =[]
  
@@ -106,16 +106,16 @@ def valid_isbn_13?(array_13)
      end
        
  end
-​
+
 def change_check_digit_from_X_to_10(array)
-​
+
 	if array[9] == "x" || array[9] == "X"
 	array[9] = "10"
 	end
 		 
 	array
 end
-​
+
 def numeric_characters?(check_x)
 	d = check_x.join("")
 		if d =~ /\D/ 
